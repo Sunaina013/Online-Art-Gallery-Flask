@@ -1,0 +1,48 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<div class="d-flex">
+
+{% if bio_update %}
+<div>
+  <img class="rounded-circle bio-image" src="{{ url_for('static', filename='bio_photos/' + bio_update.bio_photo) }}">
+</div>
+<div>
+  <h1 class="text-left">{{ bio_update.title }}</h1>
+  <p class="text-muted text-justify">{{ bio_update.content }}</p>
+</div>
+{% else %}
+<div>
+  <h1 class="text-left">Bio</h1>
+  <p class="text-muted text-justify">Welcome to our online Aura Art Gallery! We are delighted to showcase an extraordinary collection of artwork from talented artists around the world. Here is a brief bio of our gallery:
+
+    Gallery Name: Aura Art Gallery
+
+    Gallery Description: Aura Art Gallery is a vibrant and inclusive online Aura Art Gallery dedicated to promoting and celebrating the works of emerging and established artists. We provide a platform for artists to showcase their creativity and connect with art enthusiasts globally. Our gallery curates a diverse range of art forms, including paintings, sculptures, photography, digital art, mixed media, and more.
+    
+    Mission: Our mission is to foster a thriving artistic community and facilitate the discovery and appreciation of exceptional art. We strive to create an engaging and immersive experience for art lovers, offering a carefully curated selection of artwork that reflects various styles, techniques, and themes. We aim to make art accessible to all, bridging the gap between artists and collectors.
+    
+    Exhibitions: We regularly host virtual exhibitions that highlight specific themes or showcase the works of featured artists. These exhibitions provide a unique opportunity for artists to gain exposure and for art enthusiasts to explore captivating artwork from the comfort of their homes.
+    
+    Artist Support: At Aura Art Gallery, we prioritize artist support and empowerment. We work closely with our artists, providing them with a platform to exhibit and sell their artwork. We also offer promotional services, art consultations, and professional development resources to help artists enhance their careers and reach a wider audience.
+    
+    Art Collectors: We cater to art collectors and enthusiasts who are looking for exceptional artwork to add to their collections. Our gallery offers a seamless online purchasing experience, ensuring that collectors can acquire unique pieces and support artists directly.
+    
+    Community Engagement: We believe in the power of art to inspire, provoke thought, and spark conversations. We actively engage with our online community through social media, blog posts, and artist interviews, encouraging dialogue and fostering connections between artists, collectors, and art lovers worldwide.
+    
+    Thank you for visiting our online Aura Art Gallery. We hope you enjoy exploring the extraordinary talent and creativity showcased within our virtual walls. If you have any questions or need assistance, please feel free to reach out to us.
+
+  </p>
+</div>
+{% endif %}
+</div>
+
+
+{% if current_user.is_authenticated %}
+  <div class="container mt-4">
+    <a class="btn btn-outline-secondary btn-md mt-1 mb-1" href="{{ url_for('main_bp.update_bio_page') }}">Update</a>
+  </div>
+{% endif %}
+
+
+{% endblock content %}

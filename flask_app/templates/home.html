@@ -1,0 +1,33 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<div class="container">
+
+    <div class="container">
+        {% if home_update %}
+        <h1 class="text-center">{{ home_update.title }}</h1>
+          <img class="img-responsive mx-auto d-block" style="width: 600px; max-width:75%" src="{{ url_for('static', filename='home_photos/' + home_update.main_photo )}}" alt=""/>
+       <hr>
+        <p class="text-justify">{{ home_update.content }}</p>
+      </div>
+        {% else %}
+        <div class="container">
+          <h1 class="text-center">Artist Home Page Title</h1>
+          <img class="img-responsive mx-auto d-block" style="width: 600px; max-width:75%" src="{{ url_for('static', filename='home_photos/' + 'default.jpg' )}}" alt=""/>
+       <hr>
+          <p class="text-justify">Welcome to Aura Art Gallery. Everywhere you walk, every place you go is full of art, explicit or hidden! If you can see them, you will be the richest art collector and your memory will be the richest art gallery!
+
+            Thank you for visiting Aura Art Gallery Home Page. Immerse yourself in the captivating world of artistry, where imagination takes flight and emotions find their voice. We invite you to explore, discover, and embrace the extraordinary art.
+          </p>
+        </div>
+        {% endif %}
+
+
+      {% if current_user.is_authenticated %}
+        <div>
+          <a class="btn btn-outline-secondary btn-md mt-1 mb-1" href="{{ url_for('main_bp.update_home_page') }}">Update Home Page</a>
+        </div>
+      {% endif %}
+</div>
+
+{% endblock content %}
